@@ -141,7 +141,7 @@ The output of the above code will be:
     * The `HollowProducer` needs a `Publisher` and `Announcer`
     * The `HollowConsumer` needs a `BlobRetriever` and `AnnouncementWatcher`
 
-    Your `BlobRetriever` and `AnnouncementWatcher` implementations should be mirror your `Publisher` and `Announcer` 
+    Your `BlobRetriever` and `AnnouncementWatcher` implementations should mirror your `Publisher` and `Announcer` 
     interfaces.   Here, we're publishing and retrieving from local disk.  In production, we'll be publishing to and 
     retrieving from a remote file store.  We'll discuss in more detail how to integrate with your specific 
     infrastructure in [Infrastructure Integration](infrastructure.md#infrastructure-integration).
@@ -242,7 +242,7 @@ HollowProducer.Incremental incProducer = HollowProducer
         .withAnnouncer(announcer)
         .buildIncremental();
 
-incProducer.runIncrementalCycle(istate -> {
+incProducer.runIncrementalCycle(state -> {
     for(Movie movie : modifiedMovies)
         state.addOrModify(movie);
     for(Movie movie : deletedMovies)
